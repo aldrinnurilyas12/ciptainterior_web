@@ -1,0 +1,107 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+
+* {
+    font-family: "Inter", sans-serif;
+    font-style: normal;
+
+}
+
+html {
+    overflow-y: hidden;
+}
+
+body {
+    font-family: "Inter", sans-serif;
+    background-color: white;
+    
+.login-text {
+    font-size: 28px;
+    text-align: center;
+    font-family: "Inter", sans-serif;
+    font-weight: bold;
+   
+   margin: 0;
+   
+}
+}
+
+.login-user {
+  transform: translate(0px, 80%);
+}
+
+form {
+    width: 430px;
+    height: max-content;
+    background-color: white;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin: 0 auto ;
+    border-radius: 6px;
+}
+
+.input-group .ketik{
+    width: 300px;
+    height: 40px;
+    margin-top: 15px;
+    padding-left: 20px;
+    font-family: 'Inter', sans-serif;
+    color: black;
+    font-weight: 500;
+    font-size: 16px;
+    background: #f3f7f7;
+   border: none;
+    border-radius: 5px;
+}
+.input-group .ketik:focus {
+    transition: all 0.2s ease;
+    outline: none !important;
+    border-color: #5766f4;
+    box-shadow: 0 0 5px #5766f4;
+}
+.login-user .btn-login {
+    margin-top: 20px;
+    width: 320px;
+    height: 45px;
+    font-size: 18px;
+    font-weight: bold;
+    background-color : #DC143C;
+    color: rgb(255, 255, 255);
+    cursor: pointer;
+    font-family: 'Inter', sans-serif;
+    border: none;
+    border-radius: 4px;
+   
+}
+.login-email .input-group p1 {
+  
+    font-family: 'Inter', sans-serif;
+    color: rgb(128, 128, 128);
+    font-size: 17px;
+  text-align: center;
+  padding-top: 10px;
+   
+}
+.login-email a {
+    text-decoration: none;
+    color:blue;
+    text-decoration: underline;
+}
+.login-email a:hover{
+    color: rgb(23, 54, 255);
+}
+
+.alert {
+    display: none;
+    padding: 15px;
+    margin: 10px;
+    border: 1px solid;
+    border-radius: 4px;
+}
+
+.alert-danger {
+    color: #721c24;
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+    text-align: center;
+}

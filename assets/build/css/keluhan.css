@@ -1,0 +1,181 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+
+
+form {
+    width: 550px;
+    height: 700px;
+    padding-top: 30px;
+    background: rgba(255, 255, 255, 0.861);
+    box-shadow: rgba(55, 55, 55, 0.2) 0px 2px 8px 0px;
+  margin-left: 30rem;
+  justify-content: center;
+    margin-top: 40px;
+    border-radius: 6px;
+    text-align: center;
+    margin-bottom: 130px;
+
+}
+
+
+.input .forminput {
+    width: 400px;
+    height: 55px;
+    margin-top: 15px;
+    padding-left: 20px;
+    font-family: 'Inter', sans-serif;
+    color: black;
+    font-weight: 500;
+    font-size: 16px;
+    background: #f3f7f7;
+   border: none;
+    border-radius: 5px;
+ 
+
+}
+
+.input-keluhan .forminput-keluhan {
+    width: 400px;
+    height: 155px;
+    width: 400px;
+    height: 125px;
+    margin-top: 15px;
+    padding-left: 20px;
+  
+    font-family: 'Inter', sans-serif;
+    color: black;
+    font-weight: 500;
+    font-size: 16px;
+    background: #f3f7f7;
+   border: none;
+    border-radius: 5px;
+
+}
+
+    
+
+
+.input1 {
+    margin-top: 30px;
+}
+.input1 p2 {
+    color: rgb(79, 79, 79);
+    font-weight: 500;
+}
+
+.input1 .forminput1 {
+    width: 400px;
+    height: 55px;
+    margin-top: 15px;
+    padding-left: 20px;
+    font-family: 'Inter', sans-serif;
+    color: black;
+    font-weight: 500;
+    font-size: 16px;
+    background: #f3f7f7;
+   border: none;
+    border-radius: 5px;
+    margin-bottom: 20px;
+ 
+}
+
+.registerakun .regist-text {
+    text-align: center;
+    font-family: 'Inter', sans-serif;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+
+.inputpassword .forminputpass {
+    width: 400px;
+    height: 55px;
+    margin-top: 15px;
+    padding-left: 20px;
+    font-family: 'Inter', sans-serif;
+    color: black;
+    font-weight: 500;
+    font-size: 16px;
+    background: #f3f7f7;
+   border: none;
+    border-radius: 5px;
+}
+
+.inputpassword1 .forminputpass1 {
+    width: 400px;
+    height: 55px;
+    margin-top: 15px;
+    padding-left: 20px;
+    font-family: 'Inter', sans-serif;
+    color: black;
+    font-weight: 500;
+    font-size: 16px;
+    background: #f3f7f7;
+   border: none;
+    border-radius: 5px;
+ 
+}
+.inputemail .forminputemail {
+    width: 400px;
+    height: 55px;
+    margin-top: 15px;
+    padding-left: 20px;
+    font-family: 'Inter', sans-serif;
+    color: black;
+    font-weight: 500;
+    font-size: 16px;
+    background: #f3f7f7;
+   border: none;
+  
+    border-radius: 5px;
+ 
+}
+
+.btn-simpan {
+    width: 400px;
+    height: 40px;
+    margin-top: 20px;
+    background-image: linear-gradient(to right, #FF416C, #FF4B2B);
+   font-size: 18px;
+    text-align: center;
+    border: none;
+    color: white;
+    font-weight: bold;
+    border-radius: 5px;
+    justify-content: center;
+    cursor: pointer;
+}
+
+
+.forminputpass:focus {
+    transition: all 0.2s ease;
+    outline: none !important;
+    border-color: #5766f4;
+    box-shadow: 0 0 5px #5766f4;
+}
+.forminputemail:focus {
+    transition: all 0.2s ease;
+    outline: none !important;
+    border-color: #5766f4;
+    box-shadow: 0 0 5px #5766f4;
+}
+.forminput:focus {
+  
+    transition: all 0.2s ease;
+    outline: none !important;
+    border-color: #5766f4;
+    box-shadow: 0 0 5px #5766f4;
+}
+
+
+button.btn-keluhan {
+    cursor: pointer;
+    width: 400px;
+    height: 50px;
+    background-color: #5766f4;
+color: white;
+font-size: 16px;
+border-radius: 5px;
+    align-items: center;
+    margin: 0 auto;
+    border: none;
+}

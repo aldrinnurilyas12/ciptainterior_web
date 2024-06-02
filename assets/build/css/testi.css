@@ -1,0 +1,32 @@
+.content-testimonial{
+    width: 100%;
+    height: max-content;
+    padding: 15px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.content-card{
+    width: 280px;
+    height: max-content;
+    padding: 10px;
+    box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+    border-radius: 5px;
+}
+
+.content-name-person h4{
+    font-size: 13px;
+    font-weight: 700;
+}
+.content-name-person p {
+    font-size: 12px;
+    color: black;
+    margin-bottom: 5px;
+}
+
+.rating-class {
+    display: flex;
+    gap: 7px;
+}

@@ -1,0 +1,439 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+* {
+   
+    margin: 0;
+    padding: 0;
+   
+}
+
+
+body {
+    overflow-x: hidden;
+   
+    margin: 0;
+    padding: 0;
+    scroll-behavior: smooth;
+    background-color: #ffffff;
+    scrollbar-width: thin;
+    scrollbar-color: var(--thumbBG) var(--scrollbarBG);
+   font-family: 'Inter', sans-serif;
+}
+
+
+.container-intro {
+    margin-top: 40px;
+    width: 100%;
+    height: 500px;
+}
+    
+
+.container-intro .intro p {
+    margin-top: 30px;
+}
+.button-joinus  {
+   
+    background-image: linear-gradient(to right, #FF416C, #FF4B2B);
+  border: none;
+  border-radius: 50px;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 30px 2px;
+  cursor: pointer;
+}
+
+
+.container-intro .intro-foto img {
+    position: relative;
+  margin-left: 16cm;
+  margin-top: -18.3cm;
+    width: 700px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+.line {
+    position: absolute;
+    content: "";
+    margin-left:80.7rem;
+    margin-top: -30px;
+    background-color: #d1d1d1;
+    height: 40px;
+    width: 1px;
+    font-weight: bold;
+    
+}
+
+.logotoko img {
+    position: absolute;
+   width: 150px;
+   height: 90px;
+    color: black;
+    margin-left: 2em;
+    margin-top: -20px;
+    
+}
+.logotoko h1 span {
+    font-size: 40px;
+    color: rgb(255, 0, 0);
+   font-family: 'Inter', sans-serif;
+}
+
+
+
+
+
+.navbar {
+   
+position: relative;
+z-index: 100;
+    padding: 30px;
+    height: 40px; 
+}
+
+.navbar ul {
+    list-style-type: none;
+    padding: 0;
+   text-align: center;
+    
+
+}
+
+.isinavbar li {
+    display: inline-block;
+    padding-left: 60px;
+    margin-top: 5px;
+}
+
+.isinavbar a {
+    display: block;
+    text-decoration: none;
+    color: rgb(108, 108, 108);
+   font-family: 'Inter', sans-serif;
+    font-weight: 700;
+}
+
+.navbar .isinavbar ul li a:hover{
+   
+    color: #000000;
+    transition: 0.3s ease;
+}
+
+
+
+.judul h1{
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    margin-top: 23em;
+    color: #000000;
+    font-weight: 600;
+   font-family: 'Inter', sans-serif;
+}
+
+.judul1 h1{
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    margin-top: 3em;
+    color: #233c4f;
+    font-weight: 600;
+   font-family: 'Inter', sans-serif;
+}
+
+
+
+
+.login .btn-login {
+    width: 100px;
+    height: 30px;
+    border-radius: 50px;
+    padding-top: 5px;
+    float: right;
+    text-align: center;
+    background-image: linear-gradient(to right, #FF416C, #FF4B2B);
+    color: #ffffff;
+    margin-right: 40px;
+   
+    text-decoration: none;
+    font-weight: 600;
+   font-family: 'Inter', sans-serif;    
+}
+
+
+
+
+.regist .btn-regist {
+width : 130px;
+    border-radius: 50px;
+    background: white;
+    color: #FF4B2B;
+    float: right;
+    border: 2px solid #FF4B2B;
+    text-align: center;
+    border: 2px solid;
+    margin-right: 1em;
+    text-decoration: none;
+    font-weight: 600;
+    padding-top: 5px;
+    font-family: 'Inter', sans-serif;  
+    
+    
+}
+
+
+.testimonial {
+    margin-top: 20px;
+    width: 100%;
+    height: 500px;
+    background-color: #233c4f;
+}
+
+
+
+
+
+.about {
+    margin-top: 10px;
+    justify-content: center;
+  text-align: center;
+  display: flex;
+  align-items: center;
+ 
+  height: max-content;
+}
+
+.tentang-kami h1 {
+    padding-top: 40px;
+    text-align: center;
+
+}
+.about p {
+   height: max-content;
+    width: 60%;
+    color: #5d5d5d;
+    
+    
+}
+
+.isi-produk p1 {
+    font-family: 'Roboto';
+    font-size: 14px;
+    font-weight: 600;
+    margin-top: 16px;
+}
+
+
+.information {
+    position: relative;
+    margin-top:30px;
+    justify-content: center;
+    text-align: center;
+   
+    
+}
+
+.all-information {
+   
+    margin-top: 3em;
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.info p {
+   color: rgb(70, 70, 70);
+    margin-top: 0.5em;
+    text-align: center;
+    font-weight: 400;
+    font-family:'Inter', sans-serif;
+}
+
+.info h1 {
+    font-size: 17px;
+    text-align: center;
+    align-items: center;
+    margin-top: 8em;
+}
+.info {
+    padding: 20px;
+    margin-left: 30px;
+    width: 250px;
+    height: 260px;
+    
+    
+}
+.info img {
+    position: absolute;
+    text-align:center;
+    margin-top: -15px;
+    margin-left: -70px;
+    width: 150px;
+    height: 150px;
+}
+
+
+
+
+.produk {
+    display: flex;
+   flex-wrap: wrap;
+   justify-content: center;
+   margin-top: 5px;
+   
+  
+}
+
+
+.logout a {
+margin-top: -20px;
+    position: absolute;
+    float: right;
+    margin-left: 36cm;
+    width: 100px;
+    height: 30px;
+    text-align: center;
+    border: 1px solid #FF1616;
+    color: #FF1616;
+    border-radius: 10px;
+    background-color: #ffffff;
+    text-decoration: none;
+}
+
+
+.hello {
+ 
+    margin-top: -20px;
+    margin-right: 9em;
+    font-family: 'Inter';
+    float: right;
+}
+.hello span {
+    color: #5d5d5d;
+    font-family: 'Open-sans',sans-serif;
+}
+
+
+
+
+
+@media only screen and (max-device-width: 470px) {
+    body{
+        padding: 10px;
+        overflow-y:hidden ;
+        overflow-x:hidden;
+    }
+   
+   .container-intro .intro-foto img {
+    position: absolute;
+    background-color:red;
+   overflow-x:hidden;
+    width: 200px;
+    height :300px;
+}
+    
+.login .btn-login {
+    width: 80px;
+    height: 20px;
+    border-radius: 50px;
+    padding-top: 5px;
+    float: right;
+    text-align: center;
+   background-image: linear-gradient(to right, #FF416C, #FF4B2B);
+    color: #ffffff;
+  margin-right: 90px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 12px;
+   font-family: 'Inter', sans-serif;    
+}
+
+.login .btn-login:hover {
+   border:  none;
+   background-color:#222222;
+    transition: all ease-in-out 0.3s;
+}
+
+
+.regist .btn-regist {
+    width: 100px;
+    height: 30px;
+    border-radius: 50px;
+    float: right;
+    text-align: center;
+   color: #FF4B2B;
+   font-size: 12px;
+    margin-right: 2em;
+    margin-top: 10px;
+    text-decoration: none;
+    font-weight: 600;
+    padding: auto;
+    background-color :white;
+    border: 2px solid #FF4B2B;
+    font-family:'Inter', sans-serif;
+    
+    
+}
+    .logotoko img {
+        position: absolute;
+       width: 70px;
+       height: 90px;
+        color: black;
+        margin-left: -2em;
+        margin-top: -20px;
+        
+    }
+
+    .container-intro {
+        width: 400px;
+        height: 400px;
+        padding: 10px;
+    }
+    .container-intro .intro {
+        margin-left: -90px;
+        margin-top: -50px;
+
+    }
+
+  
+    .container-intro .intro h1 {
+        font-size: 20px;
+        width: 300px;
+        
+    }
+    .container-intro .intro p {
+        font-size: 12px;
+        width: 300px;
+    }
+
+    .button-joinus {
+        width: 60px;
+        height: 20px;
+    }
+    
+
+}
+
+
+
+    
+    
+    
+    
+    
+    

@@ -1,0 +1,136 @@
+
+
+
+
+ * {
+ 
+ font-style: normal;
+}
+
+body {
+
+font-style: normal;
+overflow-y: hidden;
+}
+
+.regist-user {
+    overflow-y: hidden;
+    transform: translate(0px, 4%);
+  }
+
+
+form {
+    width: 470px;
+    height: 630px;
+    padding-top: 20px;
+    background: rgb(255, 255, 255);
+    margin: 0 auto  ;
+    border-radius: 6px;
+
+}
+
+
+.input .forminput {
+    width: 320px;
+    height: 40px;
+    margin-top: 15px;
+    padding-left: 20px;
+    font-family: 'Inter', sans-serif;
+    color: black;
+    font-weight: 500;
+    font-size: 16px;
+    background: #f3f7f7;
+    margin-left: 4rem;
+   border: none;
+    border-radius: 5px;
+ 
+}
+.registerakun .regist-text {
+    text-align: center;
+    font-family: 'Inter', sans-serif;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.inputpassword .forminputpass {
+    width: 320px;
+    height: 40px;
+    margin-top: 15px;
+    padding-left: 20px;
+    font-family: 'Inter', sans-serif;
+    color: black;
+    font-weight: 500;
+    font-size: 16px;
+    background: #f3f7f7;
+   border: none;
+    border-radius: 5px;
+    margin-left: 4rem;
+}
+
+
+
+.inputemail .forminputemail {
+    width: 320px;
+    height: 40px;
+    margin-top: 15px;
+    padding-left: 20px;
+    font-family: 'Inter', sans-serif;
+    color: black;
+    font-weight: 500;
+    font-size: 16px;
+    background: #f3f7f7;
+   border: none;
+  margin-left: 4rem;
+    border-radius: 5px;
+ 
+}
+
+.btn-simpan {
+    width: 330px;
+    height: 45px;
+    margin-top: 20px;
+    margin-left: 4em;
+  background-color: #DC143C;
+   font-size: 18px;
+    text-align: center;
+    border: none;
+    color: white;
+    font-weight: bold;
+    border-radius: 5px;
+    justify-content: center;
+    cursor: pointer;
+}
+
+
+.forminputpass:focus {
+    transition: all 0.2s ease;
+    outline: none !important;
+    border-color: #5766f4;
+    box-shadow: 0 0 5px #5766f4;
+}
+.forminputemail:focus {
+    transition: all 0.2s ease;
+    outline: none !important;
+    border-color: #5766f4;
+    box-shadow: 0 0 5px #5766f4;
+}
+.forminput:focus {
+  
+    transition: all 0.2s ease;
+    outline: none !important;
+    border-color: #5766f4;
+    box-shadow: 0 0 5px #5766f4;
+}
+
+.linklogin   {
+   font-family: sans-serif;
+   color: grey;
+  
+   margin-top: 10px;
+   text-decoration: underline;
+   text-align: center;
+   
+}
+.linklogin a {
+    color: rgb(0, 55, 255);
+}

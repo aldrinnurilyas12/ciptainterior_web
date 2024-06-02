@@ -1,0 +1,875 @@
+<!doctype html>
+<html>
+
+<head>
+    <title><?php echo $nama_produk; ?></title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://unpkg.com/flowbite@1.4.7/dist/flowbite.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!-- bootstrap core css -->
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/css/bootstrap.css" />
+    <!-- font awesome style -->
+    <link href="<?php echo base_url() ?>assets/css/font-awesome.min.css" rel="stylesheet" />
+    <!-- Custom styles for this template -->
+    <link href="<?php echo base_url() ?>assets/css/spinner.css" rel="stylesheet" />
+    <link href="<?php echo base_url() ?>assets/css/style.css" rel="stylesheet" />
+    <!-- responsive style -->
+    <link href="<?php echo base_url() ?>assets/css/responsive.css" rel="stylesheet" />
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+
+</head>
+
+
+<header class="header_section">
+    <div class="container">
+        <nav class="navbar navbar-expand-lg custom_nav-container ">
+            <a class="navbar-brand" href="index.html"><img width="120" height="90" src="<?php echo base_url() ?>assets/dist/img/logo.png" alt="ini logo" /></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class=""> </span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul style="font-size: 13px;font-family:'Inter',sans-serif;" class="navbar-nav">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="../../beranda">Home <span class="sr-only"></span></a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true"> <span class="nav-label">Testimonial <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="<?php echo base_url() ?>testimonial">Beri testimonial</a></li>
+                            <li><a href="<?php echo base_url() ?>testimonial/alltestimonial">Testimonial</a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="<?php echo base_url() ?>displayproducts/allproducts">Produk</a>
+                    </li>
+
+                    <!-- <li class="nav-item">
+                        <a class="nav-link" href="<?php echo base_url() ?>beranda/blog">Blog</a>
+                    </li> -->
+                    &nbsp;
+
+                    <li class="nav-item dropdown">
+                        <?php
+                        if ($this->session->userdata('is_login')) {
+                            echo ' <a class="nav-link dropdown-toggle" href="" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true"> <span class="nav-label">'
+                        ?>
+                        <?php echo $this->session->userdata('nama_lengkap');
+                        } else {
+                            echo '<li><a href="' . base_url() . 'login">
+                        <button class="btn-login"> <span style="font-style: normal;font-size:13px;">Login</span>
+                        </button>
+                        </a>
+                    </li>';
+                        } ?>
+
+
+                        <?php foreach ($customers->result_array() as $user) {
+                            $username = $user['username'];
+                        ?>
+                            <ul class="dropdown-menu">
+                                <li> <a href="<?php echo base_url('user/profil/' . $username) ?>">Profil</a>
+                                </li>
+                                <li> <a href="<?php echo base_url('historypemesanan'); ?>">Transaksi</a>
+                                </li>
+                                <li> <a href="<?php echo base_url('kritiksaran'); ?>">Kritik dan Saran</a>
+                                </li>
+                                <li><a href="<?php echo base_url(); ?>logout/exit">Keluar</a></li>
+                            </ul>
+                        <?php } ?>
+
+
+
+                    </li>
+
+
+                </ul>
+            </div>
+        </nav>
+    </div>
+</header>
+
+<body>
+    <?php
+    $kode_pemesanan = $this->order_model->kodeunik();
+    $kode_pemesanan;
+    $sold = $total_sold->row_array();
+    ?>
+
+    <div class="outer">
+        <div style="height: max-content;padding:20px 8px 20px 8px;" class="center-wrapper">
+            <form style="padding: 5px; width:90%;" action="<?php echo base_url(); ?>orderproduk/pesanproduk" method="post" enctype="multipart/form-data">
+
+                <input class="forminput" type="hidden" name="id_pemesanan" value="<?php echo $kode_pemesanan; ?>">
+
+                <input class=" forminput" type="hidden" name="id_customer" value="<?php echo $this->session->userdata('id_customer'); ?>">
+
+                <input class="forminput" type="hidden" name="alamat" value="<?php echo $this->session->userdata('alamat'); ?>" required>
+
+                <input class="forminput" type="hidden" name="telepon" value="<?php echo $this->session->userdata('telepon'); ?>" required>
+
+
+                <input name="id_produk" type="hidden" value="<?php echo $id_produk; ?>">
+
+                <input name="nama_produk" type="hidden" value="<?php echo $nama_produk; ?>">
+
+                <input name="total_harga" type="hidden" value="<?php echo $total_harga ?>">
+
+                <!-- CONTAINER CONTENT PRODUCTS -->
+                <div class="container-fluid content">
+                    <div class="row">
+                        <div class="col-12 col-sm-12 col-md-6 shoe-slider">
+                            <div style="position:sticky;" id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+
+                                <div class="carousel-inner">
+                                    <div style="width: 100%; height:350px;">
+                                        <img style="width: 100%;height:350px;" decoding="async" src="<?php echo base_url() . '/uploads/' . $foto; ?>">
+                                    </div>
+
+                                    <a style="margin-top: -20px;" class="carousel-control-prev" href="#carxouselExampleIndicators" role="button" data-slide="prev">
+                                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                        <span class="sr-only">Previous</span>
+                                    </a>
+                                    <a style="margin-top: -20px;" class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                        <span class="sr-only">Next</span>
+                                    </a>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div style="padding:0px 10px 10px 10px; margin:0;" class="col-12 col-sm-12 col-md-6 shoe-content">
+                            <div class="text1">
+                                <span style="font-family:Inter,sans-serif;"><?php echo $status_produk; ?></span>
+                                <span>
+                                    <p style="font-size: 12px;font-family:Inter,sans-serif;">
+                                        <?php echo $waktu_pengerjaan ?>
+                                        pengerjaan</p>
+                                </span>
+                            </div>
+                            <div class="text2">
+                                <h1 style="font-size: 22px;font-weight:600;margin:0;font-family:'Inter', sans-serif;color:#333333;">
+                                    <?php echo $nama_produk; ?></h1>
+                            </div>
+                            <div style="display: flex; height:45px;align-items:center;padding:0;" class="text3">
+
+                                <h3> <?php if ($diskon == 0) {
+                                            echo "";
+                                        } else {
+                                            echo '<p
+                                        style="color:#DC143C;font-weight:500;font-size:20px;align-items:center;font-family:Inter,sans-serif;">'
+                                                .  '-'    . $diskon . '%</p>';
+                                        } ?>
+                                </h3>
+                                <h3 style="text-transform:none;font-size:20px; margin-left:5px;font-family:Inter,sans-serif;">
+                                    <?php echo "Rp" ?>
+                                    <?php echo number_format($total_harga); ?></h3>
+
+
+
+                            </div>
+                            <div style="display: flex;flex-wrap:wrap;" class="d-flex-price">
+                                <?php
+                                if ($diskon == 0) {
+                                    echo "";
+                                } else {
+
+                                    echo '<p style="color:#565959;font-weight:500;font-size:12px; margin-right:2px;font-family:Inter,sans-serif;"> Harga Normal:' .
+                                        '<span style="text-decoration: line-through;">' . "Rp " . number_format($harga) . '</span>' .
+                                        '</p>';
+                                }
+                                ?>
+                                <p style="color:black;font-weight:500;font-size:12px;margin-left:10px;font-family:Inter,sans-serif;">
+                                    <?php
+                                    if (empty($sold['total_sold'])) {
+                                        echo "Belum terjual";
+                                    } else {
+                                        echo $sold['total_sold'] . " Terjual";
+                                    } ?></p>
+
+
+                            </div>
+
+                            <hr>
+
+                            <div style="padding: 0;margin-top:10px;color:black;font-size: 12px;font-weight:600;font-family:Inter,sans-serif;" class="text4">
+                                Informasi Produk
+                            </div>
+
+                            <div style="width:max-content; height:max-content;padding-top:4px; padding-bottom:8px;font-family:Inter,sans-serif;" class="container-block-information">
+                                <div class="headline-title">
+                                    <div style="display: block;" class="d-block">
+                                        <div style="display: flex; gap:15px;" class="content-text">
+                                            <p style="color:gray;width:100px;font-size: 12px;font-weight:500;padding-top:6px;padding-bottom: 4px;font-family:Inter,sans-serif;">
+                                                Kategori</p>
+                                            <p style="font-size: 12px;font-weight:700;padding-top:6px;padding-bottom: 4px;font-family:Inter,sans-serif;">
+                                                <?php echo $category_name ?></p>
+                                        </div>
+
+                                        <div style="display: flex; gap:15px;" class="content-text">
+                                            <p style="color:gray;font-size: 12px;font-weight:500; width:100px;padding-top:6px;padding-bottom: 4px;font-family:Inter,sans-serif;">
+                                                Min pembelian</p>
+                                            <p style="font-size: 12px;font-weight:700;padding-top:6px;padding-bottom: 4px;font-family:Inter,sans-serif;">
+                                                <?php
+                                                if (empty($min_order)) {
+                                                    echo "-";
+                                                } else {
+                                                    echo $min_order . " unit";
+                                                }
+
+                                                ?> </p>
+                                        </div>
+
+                                        <div style="display: flex; gap:15px;" class="content-text">
+                                            <p style="color:gray;font-size: 12px;font-weight:500; width:100px;padding-top:6px;padding-bottom: 4px;font-family:Inter,sans-serif;">
+                                                Dimensi ukuran</p>
+                                            <p style="font-size: 12px;font-weight:700;padding-top:6px;padding-bottom: 4px;font-family:Inter,sans-serif;">
+                                                <?php
+                                                if (empty($dimensional)) {
+                                                    echo "-";
+                                                } else {
+                                                    echo $dimensional;
+                                                }
+                                                ?></p>
+                                        </div>
+
+                                        <div style="display: flex; gap:15px;" class="content-text">
+                                            <p style="color:gray;font-size: 12px;font-weight:500; width:100px;padding-top:6px;padding-bottom: 4px;font-family:Inter,sans-serif;">
+                                                Berat satuan</p>
+                                            <p style="font-size: 12px;font-weight:700;padding-top:6px;padding-bottom: 4px;font-family:Inter,sans-serif;">
+                                                <?php
+                                                if (empty($size_height)) {
+                                                    echo "-";
+                                                } else {
+                                                    echo $size_height . " gram";
+                                                }
+                                                ?> </p>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <hr>
+
+
+                            <div style="margin-bottom: 10px; position:relative;" class="material-product-list">
+
+                                <div style="padding: 0;margin-top:4px;color:black;font-size: 12px;font-weight:600;font-family:Inter,sans-serif;" class="text4">
+                                    Pilih Bahan
+                                </div>
+                                <?php
+                                if (empty($product_material->result())) {
+                                    echo '<p class="text5" style="width:max-content;font-size: 12px;color:red;border-radius:4px;margin:0;font-family:Inter,sans-serif;">Tidak ada bahan tersedia.</p>';
+                                } else {
+                                    foreach ($product_material->result() as $mtr) : ?>
+                                        <div class="dropdown-materials">
+                                            <select style="height: 35px;border-radius:5px;margin-top:5px;font-size: 12px;font-weight:600;padding-top:0; padding-bottom:0;font-family:Inter,sans-serif;" name="material" id="">
+                                                <option value="">--Pilih Bahan--</option>
+                                                <option value="<?php echo $mtr->material_satu ?>">
+                                                    <?php echo $mtr->material_satu ?></option>
+                                                <option value="<?php echo $mtr->material_dua ?>">
+                                                    <?php echo $mtr->material_dua ?></option>
+                                                <option value="<?php echo $mtr->material_tiga ?>">
+                                                    <?php echo $mtr->material_tiga ?></option>
+                                                <option value="<?php echo $mtr->material_empat ?>">
+                                                    <?php echo $mtr->material_empat ?></option>
+                                                <option value="<?php echo $mtr->material_lima ?>">
+                                                    <?php echo $mtr->material_lima ?></option>
+                                            </select>
+                                        </div>
+
+                                <?php endforeach;
+                                } ?>
+
+
+
+                            </div>
+
+
+                            <div style="display: block;" class="content-container-delivery-total">
+                                <div style="display: block;box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px; padding:10px;border-radius:3px;" class="container-total-price">
+
+
+                                    <div style="display: flex; justify-content:space-between; height:max-content;font-size:12px;" class="grand-total">
+                                        <div style="padding: 0;color:gray;font-size: 12px;font-weight:500;font-family:Inter,sans-serif;" class="text4">
+                                            Subtotal:
+                                        </div>
+
+                                        <div class="input">
+                                            <input style="width:max-content;margin: 0;font-size:12px; color:black;font-weight:600; border:none;text-align:right;padding:0;font-family:Inter,sans-serif;" name="total_harga" type="text" id="price" value="<?php echo $total_harga; ?>">
+
+                                        </div>
+
+                                    </div>
+
+                                    <div style="display: flex; justify-content:space-between; height:max-content;font-size:12px;font-family:Inter,sans-serif;" class="grand-total">
+                                        <div style="padding: 0;color:gray;font-size: 12px;font-weight:500;font-family:Inter,sans-serif;" class="text4">
+                                            Discount
+                                        </div>
+
+                                        <p style="margin: 0;font-size:12px; color:black; font-weight:600;font-family:Inter,sans-serif;">
+                                            <?php
+
+                                            if ($diskon == 0) {
+                                                echo "0";
+                                            } else {
+                                                echo "-" . $diskon . "%";
+                                            }
+                                            ?></p>
+                                    </div>
+
+                                    <div style="display: flex; justify-content:space-between; height:max-content;" class="grand-total">
+                                        <div style="padding: 0;color:gray;font-size: 12px;font-weight:500;font-family:Inter,sans-serif;" class="text4">
+                                            Qty:
+                                        </div>
+                                        <input name="quantity" style="width:max-content;margin: 0;color:black; font-weight:600;font-size:12px; border:none;text-align:right;padding:0;font-family:Inter,sans-serif;" type="text" id="quantity2" value="1" readonly>
+
+                                    </div>
+
+                                    <div style="display: flex; justify-content:space-between; height:40px;" class="grand-total">
+                                        <div style="padding: 0;color:gray;font-size: 12px;font-weight:500;margin-top: 12px;" class="text4">
+                                            <h5 style="font-size: 16px; color:black;font-weight:bold;font-family:Inter,sans-serif;">
+                                                Total:</h5>
+                                        </div>
+
+                                        <input name="grand_total" style="width:max-content;margin: 0;font-size:14px; color:#DC143C; 
+                                    border:none;text-align:right;padding:0;font-weight:700;font-family:Inter,sans-serif;" type="text" id="total" readonly>
+
+                                    </div>
+                                </div>
+
+                            </div>
+
+
+                            <div style="margin-top: 2em;" class="btn-wrapper">
+                                <div style="display: flex;justify-content:space-between;width:100%;" class="action">
+                                    <button style="width: 180px;margin-right:10px;background:#DC143C; border-radius:10px;padding:10px;height:45px;
+                                        color:white;font-weight:600;font-family:Inter,sans-serif;" data-modal-toggle="popup-modal" type="button">Pesan</button>
+                                    <!-- <a class="btn-wa" style="background-color: #04AA62;width:46px;border-radius:50px;display:flex;
+                            justify-content:center;align-items:center;" href="https://wa.me/089674050680/?text=urlencodedtext"><i style="color: white;" class="fa fa-whatsapp"></i>
+
+                                    </a> -->
+
+                                    <div style="display: flex; justify-content:space-between; height:max-content;" class="grand-total">
+                                        <div style=" justify-content:center ;gap:5px;" class="flex-btn">
+                                            <button style="width: 25px; height:25px; border-radius:50px;border:2px solid blue;align-items:center;" type="button" id="plus">+</button>
+                                            <input style="width: 50px; border-radius:5px;text-align:center;" type="text" id="quantity" name="quantity" value="1" readonly>
+                                            <button style="width: 25px; height:25px; border-radius:50px;border:2px solid blue;align-items:center;" type="button" id="minus">-</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--  -->
+                    </div>
+                </div>
+        </div>
+
+        <!-- DISPLAY MODAL -->
+        <div id="popup-modal" tabindex="-1" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 md:inset-0 h-modal md:h-full">
+            <div class="relative p-4 w-full max-w-md h-full md:h-auto">
+                <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                    <button type="" class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white" data-modal-toggle="popup-modal">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+                        </svg>
+                    </button>
+                    <div class="p-6 text-center">
+                        <svg class="mx-auto mb-4 w-14 h-14 text-gray-400 dark:text-gray-200" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                        <h3 class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">Apa
+                            kamu
+                            ingin
+                            Pesan produk ini ?</h3>
+                        <div style="display: block;" class="btn-btn">
+                            <button style="background-color: #DC143C;color:white;padding:10px;border-radius:10px;" data-modal-toggle="popup-modal" id="redirectButton" type="submit">Pesan produk
+                            </button>
+
+                            <button style="background-color: white;color:black;padding:10px;border-radius:10px;" data-modal-toggle="popup-modal" type="button">Batal</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </form>
+    </div>
+
+    <!-- SPINNER LOADING -->
+
+    <div id="loadingOverlay">
+        <div class="spinner"></div>
+    </div>
+
+</body>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script src="https://unpkg.com/flowbite@1.4.7/dist/flowbite.js"></script>
+
+<!-- SCRIPT LOADING BUTTON -->
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+
+    * {
+        font-family: "Inter", sans-serif;
+        font-style: normal;
+
+    }
+
+    body {
+        font-family: "Inter", sans-serif;
+        font-style: normal;
+    }
+
+    #loadingOverlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(50, 48, 48, 0.592);
+        z-index: 999;
+    }
+
+    button.btn-login {
+        outline: none;
+        cursor: pointer;
+        border: none;
+        padding: 0.2rem 2rem;
+        margin: 0;
+        font-family: inherit;
+        font-size: inherit;
+        position: relative;
+        display: inline-block;
+        letter-spacing: 0.05rem;
+        font-weight: 600;
+        font-size: 15px;
+        border-radius: 500px;
+        overflow: hidden;
+        background: #DC143C;
+        color: ghostwhite;
+    }
+
+
+    .spinner {
+        border: 8px solid #f3f3f3;
+        border-top: 8px solid #3498db;
+        border-radius: 50%;
+        width: 50px;
+        height: 50px;
+        animation: spin 1s linear infinite;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin-top: -25px;
+        margin-left: -25px;
+    }
+
+    @keyframes spin {
+        0% {
+            transform: rotate(0deg);
+        }
+
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+</style>
+
+<script>
+    document.getElementById('redirectButton').addEventListener('click', function() {
+        // Display the loading overlay
+        document.getElementById('loadingOverlay').style.display = 'block';
+
+        // Simulate some asynchronous operation (e.g., an API request)
+        setTimeout(function() {
+            // Redirect to another page after the loading animation
+            window.location.href = 'historypemesanan';
+        }, 5000); // Adjust the timeout as needed
+    });
+</script>
+
+
+<!-- END -->
+
+<script>
+    $(document).ready(function() {
+        // Initial calculations
+        calculateTotal();
+
+        // Button click events
+        $("#plus").click(function() {
+            incrementQuantity();
+        });
+
+        $("#minus").click(function() {
+            decrementQuantity();
+        });
+    });
+
+    function incrementQuantity() {
+        var quantity = parseInt($("#quantity").val());
+        $("#quantity").val(quantity + 1);
+        calculateTotal();
+
+        var quantity2 = parseInt($("#quantity2").val());
+        $("#quantity2").val(quantity2 + 1);
+        calculateTotal();
+    }
+
+    function decrementQuantity() {
+        var quantity = parseInt($("#quantity").val());
+        if (quantity > 1) {
+            $("#quantity").val(quantity - 1);
+            calculateTotal();
+        }
+
+        var quantity2 = parseInt($("#quantity2").val());
+        if (quantity2 > 1) {
+            $("#quantity2").val(quantity2 - 1);
+            calculateTotal();
+        }
+    }
+
+    function calculateTotal() {
+        var quantity = parseInt($("#quantity").val());
+        var price = parseFloat($("#price").val());
+        var total = quantity * price;
+        $("#total").val(parseFloat(total));
+    }
+</script>
+
+<style>
+    p {
+        margin-bottom: 0;
+    }
+
+    .outer {
+        width: 100%;
+        position: relative;
+        height: 100%;
+        background-color: #03849d05;
+        display: flex;
+        justify-content: center;
+    }
+
+    .center-wrapper {
+        position: relative;
+        width: 120%;
+        height: 100%;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .content {
+        width: 100%;
+        border-radius: 4px;
+    }
+
+    .shoe-slider {
+
+        height: 100%;
+    }
+
+    .shoe-content {
+        background: #fff;
+        position: relative;
+    }
+
+    .text1 {
+        width: 100%;
+        height: auto;
+        border-left: 1px solid #333333;
+        padding-left: 10px;
+    }
+
+    .text1 span {
+        display: block;
+    }
+
+    .text1 span:nth-child(1) {
+        color: #03849D;
+        font-size: 12px;
+    }
+
+    .text1 span:nth-child(2) {
+        color: #6b6b6b;
+        font-size: 12px;
+    }
+
+    .text2 {
+        font-size: 30px;
+        color: #444;
+        padding-top: 10px;
+        padding-bottom: 5px;
+    }
+
+    .text3 {
+        font-size: 16px;
+        color: #444;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        font-weight: 500;
+        letter-spacing: 2px;
+    }
+
+    .text4 {
+        font-size: 12px;
+        color: #6b6b6b;
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+
+    .text5 {
+        font-size: 12px;
+        color: #6b6b6b;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        line-height: 23px;
+    }
+
+    .btn-wrapper {
+        width: 100%;
+        height: auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 10px;
+    }
+
+    .btn-wrapper .btn {
+        box-shadow: 2px 5px 20px rgba(32, 57, 90, 0.479);
+        background: #03849D;
+        border-radius: 32px;
+        color: #fbfbfb;
+        font-size: 14px;
+        padding: 8px 48px;
+    }
+
+    .qantity .fas {
+        color: #dbdbdb;
+        font-size: 9px;
+    }
+
+    .one {
+        padding-left: 14px;
+        padding-right: 14px;
+    }
+
+    .social-icons {
+        position: absolute;
+        top: 50%;
+        right: -70px;
+        transform: translateY(-50%);
+    }
+
+    .social-icons i {
+        display: block;
+    }
+
+    .social-icons .fa-twitter {
+        background: #4099FF;
+        width: 30px;
+        height: 30px;
+        line-height: 30px;
+        text-align: center;
+        color: #fff;
+        border-radius: 50%;
+        font-size: 12px;
+        box-shadow: 2px 5px 20px rgba(32, 57, 90, 0.479);
+    }
+
+    .social-icons .fa-pinterest-p {
+        background: #DC143C;
+        width: 30px;
+        height: 30px;
+        line-height: 30px;
+        text-align: center;
+        color: #fff;
+        margin-top: 15px;
+        margin-bottom: 15px;
+        border-radius: 50%;
+        font-size: 12px;
+        box-shadow: 2px 5px 20px rgba(32, 57, 90, 0.479);
+    }
+
+    .social-icons .fa-facebook-f {
+        background: #3B5998;
+        width: 30px;
+        height: 30px;
+        line-height: 30px;
+        text-align: center;
+        color: #fff;
+        border-radius: 50%;
+        font-size: 12px;
+        box-shadow: 2px 5px 20px rgba(32, 57, 90, 0.479);
+    }
+
+    .carousel .carousel-indicators {
+        bottom: -40px;
+    }
+
+    .carousel .carousel-indicators li {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        border: none;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .carousel .carousel-indicators li img {
+        max-width: 80%;
+        height: auto;
+        vertical-align: middle;
+        border-radius: 50%;
+    }
+
+    .carousel .carousel-indicators li.active {
+        background: #fff;
+        box-shadow: 2px 5px 20px rgba(32, 57, 90, 0.379);
+    }
+
+    .carousel .carousel-indicators li:nth-child(2) {
+        margin-left: 50px;
+        margin-right: 50px;
+    }
+
+    .carousel-control-next,
+    .carousel-control-prev {
+        position: absolute;
+        width: 50px;
+        height: 50px;
+        top: 92%;
+        z-index: 999999;
+    }
+
+    .carousel-control-prev-icon,
+    .carousel-control-next-icon {
+        background-image: none;
+        width: 10px;
+        height: 10px;
+        transform: rotate(45deg);
+    }
+
+    .carousel-control-prev-icon {
+        border-left: 2px solid black;
+        border-bottom: 2px solid black;
+    }
+
+    .carousel-control-next-icon {
+        border-top: 2px solid black;
+        border-right: 2px solid black;
+    }
+
+    .carousel-control-prev {
+        left: 33%;
+    }
+
+    .carousel-control-next {
+        right: 33%;
+    }
+
+    span.qantity {
+        text-align: center;
+    }
+
+    .quantity-text {
+        color: #dbdbdb;
+        font-size: 9px;
+        margin-top: 4px;
+    }
+
+    @media only screen and (min-width:768px) and (max-width: 1024px) {
+        .center-wrapper {
+            height: auto;
+        }
+
+        .social-icons {
+            right: -55px;
+        }
+    }
+
+    @media only screen and (max-width: 767px) {
+        .outer {
+            height: auto;
+        }
+
+        .shoe-content {
+            margin-top: 55px;
+        }
+
+        .center-wrapper {
+            height: auto;
+            margin: 20px;
+            border-radius: 0px;
+            width: 90%;
+            padding-bottom: 20px;
+            top: unset;
+            left: unset;
+            transform: unset;
+            -webkit-transform: unset;
+            -moz-transform: unset;
+            -ms-transform: unset;
+            -o-transform: unset;
+            box-shadow: 0px 2px 10px rgba(0, 0, 0, .10);
+        }
+
+        .content {
+            width: 100%;
+        }
+
+        .social-icons {
+            position: absolute;
+            top: 14%;
+            right: -12px;
+        }
+
+        .carousel .carousel-indicators li {
+            width: 120px;
+            height: 35px;
+        }
+
+        .carousel-control-next,
+        .carousel-control-prev {
+            top: 82%;
+        }
+
+        .carousel-control-prev {
+            left: 27%;
+        }
+
+        .carousel-control-next {
+            right: 27%;
+        }
+
+        .carousel .carousel-indicators {
+            bottom: -4px;
+        }
+
+        .text2 {
+            font-size: 22px;
+        }
+
+        .text3 {
+            font-size: 14px;
+        }
+    }
+</style>
+
+</html>
