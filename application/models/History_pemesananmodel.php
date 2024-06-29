@@ -16,7 +16,7 @@ class History_pemesananmodel extends CI_Model
         ON ord.id_pemesanan = pay.id_pemesanan
         LEFT JOIN orders_status as ords
         ON ord.status_id = ords.status_id
-        WHERE ord.id_customer='$id_customer' AND ords.status_code='2' OR ords.status_code='3'
+        WHERE ord.id_customer='$id_customer' (AND ords.status_code='2' OR ords.status_code='3')
         ORDER BY pay.tgl_bayar DESC;");
         return $data;
     }
